@@ -1,0 +1,76 @@
+---
+apiVersion: claim.nephio.org/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: 'workloadcluster-example-0'
+  namespace: example
+spec:
+  clusterName: "example-workloadCluster"
+  revision: v1
+  something: x
+  number: 0
+
+---
+apiVersion: claim.nephio.org/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: 'workloadcluster-example-1'
+  namespace: example
+  annotations:
+    kform.dev/count: "5"
+    kform.dev/index: "0"
+    kform.dev/path: workload-cluster.yaml
+spec:
+  clusterName: "example-workloadCluster"
+  revision: v1
+  something: x
+  number: 1
+
+---
+apiVersion: claim.nephio.org/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: 'workloadcluster-example-2'
+  namespace: example
+  annotations:
+    kform.dev/count: "5"
+    kform.dev/index: "0"
+    kform.dev/path: workload-cluster.yaml
+spec:
+  clusterName: "example-workloadCluster"
+  revision: v1
+  something: x
+  number: 2
+
+---
+apiVersion: claim.nephio.org/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: 'workloadcluster-example-3'
+  namespace: example
+  annotations:
+    kform.dev/count: "5"
+    kform.dev/index: "0"
+    kform.dev/path: workload-cluster.yaml
+spec:
+  clusterName: "example-workloadCluster"
+  revision: v1
+  something: x
+  number: 3
+
+---
+apiVersion: claim.nephio.org/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: 'workloadcluster-example-4'
+  namespace: example
+  annotations:
+    kform.dev/count: "5"
+    kform.dev/index: "0"
+    kform.dev/path: workload-cluster.yaml
+spec:
+  clusterName: "example-workloadCluster"
+  revision: v1
+  something: x
+  number: 4
+

@@ -1,0 +1,9 @@
+apiVersion: kubernetes.provider.kform.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: kubernetes
+  namespace: default
+  annotations:
+    kform.dev/block-type: provider
+spec: 
+  configPath: "/Users/henderiw/.kube/config"

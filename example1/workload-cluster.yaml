@@ -1,0 +1,9 @@
+apiVersion: claim.nephio.org/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: input.context[0].metadata.name
+  namespace: input.context[0].metadata.namespace
+spec:
+  revision: input.context[0].data.revision
+  something: x
+

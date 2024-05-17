@@ -1,0 +1,12 @@
+apiVersion: ipam.be.kuid.dev/v1alpha1
+kind: IPClaim
+metadata:
+  name: vpc1.10.0.0.1-24
+spec:
+  index: vpc-kform
+  prefixType: network
+  prefix: 10.0.0.1/24
+  defaultGateway: true
+  labels:
+    inv.kuid.dev/network: knet1
+    inv.kuid.dev/endpoint-name: gw

@@ -1,0 +1,17 @@
+apiVersion: ipam.resource.nephio.org/v1alpha1
+kind: IPClaim
+metadata:
+  name: ipclaim.node-x.ep-a
+  namespace: default
+spec:
+  kind: network
+  networkInstance:
+    name: vpc1
+    namespace: default
+  selector:
+    matchLabels:
+      nephio.org/purpose: test
+  labels:
+    nephio.org/node: x
+    nephio.org/endpoint: a
+  

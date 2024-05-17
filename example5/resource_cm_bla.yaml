@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: bla
+  namespace: default
+  annotations:
+    kform.dev/block-type: resource
+    kform.dev/resource-type: kubernetes_manifest 
+    kform.dev/resource-id: bla 
+data:
+  count: "kubernetes_manifest.edge01[0].data.count"

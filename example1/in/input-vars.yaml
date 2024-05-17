@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: myapp
+  namespace: ns1
+  annotations:
+    kform.dev/resource-id: context 
+data: 
+  clusterName: edge01
+  revision: v3

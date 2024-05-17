@@ -1,0 +1,13 @@
+apiVersion: claim.nephio.org/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: workloadCluster
+  namespace: input.context[0].metadata.namespace
+  annotations:
+    "kform.dev/count": 'input.context[0].data.attachmentType == "vlan" ? 1 : 0'
+spec:
+  clusterName: "[input.context[0].data.clusterName, 'workloadCluster'].concat('-')"
+  revision: input.context[0].data.revision
+  something: x
+  number: count.index
+

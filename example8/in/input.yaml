@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: example
+  namespace: default
+  annotations:
+    kform.dev/resource-id: context 
+data:
+  networkInstance: vpc-kform2
+  network: knet2
+  node: b
+  ep: kep2

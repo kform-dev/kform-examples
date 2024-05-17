@@ -1,0 +1,82 @@
+---
+# blockType: input, resourceID: context
+# defines the input of the Kform package as a configmap KRM resource
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: example-app
+  namespace: example-system
+  annotations:
+    kform.dev/block-type: input
+    kform.dev/resource-id: context 
+    kform.dev/default: "true"
+data:
+  image: nginx
+
+---
+# blockType: provider, resourceID: kubernetes
+# defines the kubernetes provider configuration
+apiVersion: kubernetes.provider.kform.io/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: kubernetes
+  annotations:
+    kform.dev/block-type: provider
+
+---
+# blockType: resource, resourceID: ns, resourceType: kubernetes_manifest
+# namespace KRM resource that will be applied in the system
+# metadata.name is transformed using an expression
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: input.context[0].metadata.namespace
+  annotations:
+    kform.dev/block-type: resource
+    kform.dev/resource-type: kubernetes_manifest 
+    kform.dev/resource-id: ns 
+
+---
+# blockType: resource, resourceID: ns, resourceType: kubernetes_manifest
+# namespace KRM resource that will be applied in the system
+# expressions are used to transform the KRM manifest before applying to the system
+kind: ServiceAccount
+apiVersion: v1
+metadata:
+  name: input.context[0].metadata.name
+  namespace: input.context[0].metadata.namespace
+  annotations:
+    kform.dev/block-type: resource
+    kform.dev/resource-type: kubernetes_manifest 
+    kform.dev/resource-id: sa
+
+---
+# blockType: resource, resourceID: deployment, resourceType: kubernetes_manifest
+# deployment KRM resource that will be applied in the system
+# expressions are used to transform the KRM manifest before applying to the system
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: input.context[0].metadata.name
+  namespace: input.context[0].metadata.namespace
+  labels:
+    app: "input.context[0].metadata.name"
+  annotations:
+    kform.dev/block-type: resource
+    kform.dev/resource-type: kubernetes_manifest 
+    kform.dev/resource-id: deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: "input.context[0].metadata.name"
+  template:
+    metadata:
+      labels:
+        app: "input.context[0].metadata.name"
+    spec:
+      serviceAccountName: "input.context[0].metadata.name"
+      containers:
+      - name: "input.context[0].metadata.name"
+        image: "input.context[0].data.image"
+        imagePullPolicy: Always

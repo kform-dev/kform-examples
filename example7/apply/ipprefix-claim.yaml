@@ -1,0 +1,15 @@
+apiVersion: ipam.resource.nephio.org/v1alpha1
+kind: IPClaim
+metadata:
+  name: ipprefix-claim1
+  namespace: default
+spec:
+  kind: network
+  networkInstance:
+    name: vpc1
+    namespace: default
+  prefixLength: 24
+  createPrefix: true
+  labels:
+    nephio.org/purpose: test
+    nephio.org/gateway: "true"

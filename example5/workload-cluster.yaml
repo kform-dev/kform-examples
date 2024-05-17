@@ -1,0 +1,12 @@
+apiVersion: claim.nephio.org/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: '["workloadcluster", kubernetes_manifest.edge01[0].data.clusterName, count.index].concat("-")'
+  namespace: kubernetes_manifest.edge01[0].metadata.namespace
+  annotations:
+    "kform.dev/count": kubernetes_manifest.edge01[0].data.count
+spec:
+  clusterName: "[kubernetes_manifest.edge01[0].data.clusterName, 'workloadCluster'].concat('-')"
+  revision: kubernetes_manifest.edge01[0].data.revision
+  something: x
+  number: count.index

@@ -1,0 +1,12 @@
+apiVersion: ipam.be.kuid.dev/v1alpha1
+kind: IPIndex
+metadata:
+  name: vpc-kform
+spec:
+  prefixes:
+  - prefix: 10.0.0.0/8
+    labels:
+      inv.kuid.dev/test: a
+  - prefix: 172.0.0.0/8
+    labels:
+      inv.kuid.dev/test: b

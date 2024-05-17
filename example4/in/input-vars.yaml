@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: context
+  namespace: ns1
+data: 
+  clusterName: edge01
+  revision: v1
+  count: "5"
+  attachmentType: vlan

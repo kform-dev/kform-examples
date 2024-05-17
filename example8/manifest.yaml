@@ -1,0 +1,64 @@
+---
+# blockType: input, resourceID: context
+# defines the input of the Kform package as a configmap KRM resource
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: example
+  namespace: default
+  annotations:
+    kform.dev/block-type: input
+    kform.dev/resource-id: context 
+    kform.dev/default: "true"
+data:
+  networkInstance: vpc-kform
+  network: knet1
+  node: a
+  ep: kep1
+
+
+---
+# blockType: provider, resourceID/name: kubernetes
+# defines the kubernetes provider configuration
+apiVersion: kubernetes.provider.kform.dev/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: kubernetes
+  namespace: default
+  annotations:
+    kform.dev/block-type: provider
+spec: 
+  configPath: "/Users/henderiw/.kube/config"
+
+
+---
+# blockType: resource, resourceID: deployment, resourceType: kubernetes_manifest
+# deployment KRM resource that will be applied in the system
+# expressions are used to transform the KRM manifest before applying to the system
+apiVersion: ipam.be.kuid.dev/v1alpha1
+kind: IPClaim
+metadata:
+  name: example8.claim1
+  namespace: default
+  annotations:
+    kform.dev/block-type: resource
+    kform.dev/resource-type: kubernetes_manifest 
+    kform.dev/resource-id: ipclaim
+spec:
+  index: input.context[0].data.networkInstance
+  selector:
+    matchLabels:
+      inv.kuid.dev/network: input.context[0].data.network
+  labels:
+    inv.kuid.dev/endpoint-name: input.context[0].data.ep
+
+---
+# blockType: output
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: output
+  namespace: default
+data:
+  prefix: kubernetes_manifest.ipclaim[0].status.address
+  defaultGateway: kubernetes_manifest.ipclaim[0].status.defaultGateway
