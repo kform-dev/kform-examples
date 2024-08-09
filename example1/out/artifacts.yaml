@@ -1,0 +1,10 @@
+---
+apiVersion: claim.nephio.org/v1alpha1
+kind: WorkloadCluster
+metadata:
+  name: example
+  namespace: example
+spec:
+  revision: v1
+  something: x
+

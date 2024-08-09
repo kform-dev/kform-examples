@@ -1,0 +1,21 @@
+---
+apiVersion: network.app.kuid.dev/v1alpha1
+kind: Network
+metadata:
+  name: topo3nodesrl.default
+  namespace: default
+  annotations:
+    kform.dev/block-type: resource
+    kform.dev/resource-type: kubernetes_manifest 
+    kform.dev/resource-id: test
+spec:
+  topology: topo3nodesrl
+  
+---
+apiVersion: kubernetes.provider.kform.dev/v1alpha1
+kind: ProviderConfig
+metadata:
+  name: kubernetes
+  namespace: default
+  annotations:
+    kform.dev/block-type: provider

@@ -1,9 +1,13 @@
 apiVersion: claim.nephio.org/v1alpha1
 kind: WorkloadCluster
 metadata:
-  name: '["workloadCluster", input.context[0].data.clusterName].concat("-")'
+  name: 'test'
   namespace: input.context[0].metadata.namespace
+  annotations:
+    "kform.dev/for-each": input.context[0].data.test
 spec:
   revision: input.context[0].data.revision
   something: x
+  key: each.key
+  val: each.value
 

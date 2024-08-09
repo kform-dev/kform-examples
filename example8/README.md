@@ -3,6 +3,10 @@
 example=example8
 
 export KFORM_PROVIDER_KUBERNETES=/Users/henderiw/go/bin/kform-provider-kubernetes
+export KFORM_PROVIDER_KUBERNETES=/usr/local/bin/kform-provider-kubernetes
+
+export KFORM_PROVIDER_KUBERNETES=/Users/henderiw/code/kform/kform-providers/kubernetes/bin/kform-provider-kubernetes
+export KFORM_PROVIDER_KUBERNETES=/Users/henderiw/go/bin/kform-providers-kubernetes
 
 export KFORM_PROVIDER_KUBERNETES=/Users/henderiw/code/kform/kform-providers/kubernetes/bin/kform-provider-kubernetes
 

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Test
+metadata:
+  name: context
+  namespace: ns1
+data: 
+  clusterName: edge01
+  revision: v1
+  test: 
+  - item1
+  - item2
+  - item3
+  - item4
+  - item5
